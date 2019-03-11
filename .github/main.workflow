@@ -1,12 +1,8 @@
-workflow "New workflow" {
-  on = "push"
-  resolves = ["Hello World"]
+workflow "button logger" {
+  on = "repository_dispatch"
+  resolves = "debug"
 }
 
-action "Hello World" {
-  uses = "./action-a"
-  args = "\"Hello world, I'm $MY_NAME!\""
-  env = {
-    MY_NAME = "Georgia"
-  }
+action "debug" {
+  uses = "actions/bin/debug"
 }
