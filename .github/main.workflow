@@ -1,8 +1,9 @@
-workflow "button logger" {
+workflow "Handle inbound event" {
   on = "repository_dispatch"
-  resolves = "debug"
+  resolves = ["Send Push Notification"]
 }
 
-action "debug" {
-  uses = "actions/bin/debug"
+action "Send Push Notification" {
+  uses = "techulus/push-github-action@0.0.1"
+  secrets = ["API_KEY", "MESSAGE"]
 }
